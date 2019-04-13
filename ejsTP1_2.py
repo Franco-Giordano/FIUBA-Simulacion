@@ -1,7 +1,6 @@
 from ejsTP1_1 import GCL
 
 from matplotlib import pyplot as plt
-import random
 import math
 
 x0 = 96771 # = 0.15*74620 + 0.25*100608 + 0.6*100710
