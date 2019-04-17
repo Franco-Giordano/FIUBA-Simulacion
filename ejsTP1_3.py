@@ -21,3 +21,4 @@ media = sum(resultados) / len(resultados)
 print(media)
 
 #varianza ???????????????
+#usar una funcion ya implementada (numpy) o calcular el s^2
