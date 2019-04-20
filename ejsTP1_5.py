@@ -1,46 +1,38 @@
-from ejsTP1_1 import GCL
+from ejsTP1_1 import realizacionesEstandarGCL
 
 from matplotlib import pyplot as plt
 import math
 
-x0 = 96771 # = 0.15*74620 + 0.25*100608 + 0.6*100710
+def realizacionesEJ5(cantidad=100000):
 
-multiplicador = 1013904223 
+	realizacionesUniformes = realizacionesEstandarGCL(cantidad)
 
-incremento = 1664525
+	resultados = []
 
-modulo = 2**32
+	for u in realizacionesUniformes:
 
-resultados = []
+		realizacion = 0
 
-it = x0
+		if u <= 0.4:
+			realizacion = 1
 
+		if 0.4 < u <= 0.7:
+			realizacion = 2
 
-for i in range(100000):
+		if 0.7 < u <= 0.82:
+			realizacion = 3
 
-	it = GCL(multiplicador, incremento, modulo, it)
+		if 0.82 < u <= 0.92:
+			realizacion = 4
 
-	u = it / (modulo-1)
+		if 0.92 < u:
+			realizacion = 5
 
-	realizacion = 0
+		resultados.append(realizacion)
 
-	if u <= 0.4:
-		realizacion = 1
+	return resultados
 
-	if 0.4 < u <= 0.7:
-		realizacion = 2
+if __name__ == "__main__":
 
-	if 0.7 < u <= 0.82:
-		realizacion = 3
-
-	if 0.82 < u <= 0.92:
-		realizacion = 4
-
-	if 0.92 < u:
-		realizacion = 5
-
-	resultados.append(realizacion)
-
-
-plt.hist(resultados)
-plt.show()
+	plt.hist(realizacionesEJ5())
+	plt.show()

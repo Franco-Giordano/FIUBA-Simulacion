@@ -9,8 +9,7 @@ def GCL(multi, inc, mod, x0):
 
 	return ((multi * x0) + inc) % mod
 
-
-if __name__ == "__main__":
+def realizacionesGCL(cantidad=100000):
 	x0 = 96771 # = 0.15*74620 + 0.25*100608 + 0.6*100710
 
 	multiplicador = 1013904223 
@@ -19,24 +18,29 @@ if __name__ == "__main__":
 
 	modulo = 2**32
 
-	resultados_A = []
+	resultados = []
 
 	iteracion_actual = x0
 
-	for i in range(5):
+	for i in range(cantidad):
 
 		iteracion_actual = GCL(multiplicador, incremento, modulo, iteracion_actual)
-		print(iteracion_actual)
-		resultados_A.append(iteracion_actual)
+		resultados.append(iteracion_actual)
 
-	resultados_B = []
+	return resultados
 
-	iteracion_actual = x0
-	for i in range(100000):
+def realizacionesEstandarGCL(cantidad=100000):
+	return [i/(2**32) for i in realizacionesGCL(cantidad=cantidad)]
 
-		iteracion_actual = GCL(multiplicador, incremento, modulo, iteracion_actual)
-		resultados_B.append(iteracion_actual / (modulo-1))
 
+
+if __name__ == "__main__":
+	
+	resultados_A = realizacionesGCL(cantidad=5)
+
+	print(resultados_A)
+
+	resultados_B = realizacionesEstandarGCL()
 
 	plt.hist(resultados_B)
 	plt.show()

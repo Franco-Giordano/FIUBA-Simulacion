@@ -1,24 +1,32 @@
 from matplotlib import pyplot as plt
 import random
 import math
+import numpy as np
 
-resultados = []
 
+def realizacionesNormalEstandar(cant=100000):
+	resultados = []
 
-for i in range(100000):
+	for i in range(cant):
 
-	u1, u2 = random.random(), random.random()
+		u1, u2 = random.random(), random.random()
 
-	z = math.sqrt(-2 * math.log(u1)) * math.cos(2 * math.pi * u2)
+		z = math.sqrt(-2 * math.log(u1)) * math.cos(2 * math.pi * u2)
 
-	resultados.append(z)
+		resultados.append(z)
 
-plt.hist(resultados)
-plt.show()
+	return resultados
 
-#media
-media = sum(resultados) / len(resultados)
-print(media)
+if __name__ == "__main__":
 
-#varianza ???????????????
-#usar una funcion ya implementada (numpy) o calcular el s^2
+	resultados = realizacionesNormalEstandar()
+
+	plt.hist(resultados)
+	plt.show()
+
+	#media
+	media = sum(resultados) / len(resultados)
+	print("ESPERANZA: ",media)
+
+	#varianza
+	print("VARIANZA: ",np.var(resultados))
