@@ -21,6 +21,12 @@ if __name__ == "__main__":
 
 	resultados = realizacionesNormalEstandar()
 
+
+
+	plt.title('Distribucion de realizaciones luego de transformar')
+	plt.ylabel('Cantidad de ocurrencias')
+	plt.xlabel('Muestra generada')
+	
 	plt.hist(resultados)
 	plt.show()
 

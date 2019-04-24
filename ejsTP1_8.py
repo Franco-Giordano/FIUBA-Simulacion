@@ -20,10 +20,10 @@ statistic, pvalue = sp.chisquare(obs_values, f_exp=expected_values)
 print(statistic, pvalue)
 
 
-#REVISAR: No me acuerdo si debia concluir asi o al reves!
+#si pvalue <= alfa entonces rechazo H0 (digo que son distintas)
 
-if 1 - pvalue < 0.05:
-	print("las distribuciones no son las mismas")
+if pvalue <= 0.01:
+	print("las distribuciones NO son las mismas")
 
 else:
-	print("las distribciones coinciden")
+	print("las distribuciones coinciden")

@@ -42,5 +42,8 @@ if __name__ == "__main__":
 
 	resultados_B = realizacionesEstandarGCL()
 
+	plt.title('Distribucion de realizaciones con GCL')
+	plt.ylabel('Cantidad de ocurrencias')
+	plt.xlabel('Muestra generada')
 	plt.hist(resultados_B)
 	plt.show()
