@@ -2,7 +2,7 @@ import random as rnd
 
 tiempo_total = 0
 
-cantidad_iteraciones = 10000000
+cantidad_iteraciones = 100000
 
 for muestra in range(cantidad_iteraciones):
 
