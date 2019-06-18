@@ -1,5 +1,5 @@
 import random as rnd
-
+#rnd.seed(1)
 class Instruccion:
 
 	def __init__(self, arribo_anterior, busca_con_cache=False, tiempo_arribo=0):
@@ -57,7 +57,7 @@ class Instruccion:
 		return '<{}, {}>'.format(self.tiempo_arribo, self.tiempo_procesamiento)
 
 
-cantidad_iteraciones = 10
+cantidad_iteraciones = 10000
 
 
 #creo vector de instrucciones, con sus tiempos de arribo sin buscar en cache
@@ -72,19 +72,18 @@ instrucciones_con_cache = [ins.convertir_a_con_cache() for ins in instrucciones_
 
 tiempos = [i.tiempo_ejecucion for i in instrucciones_recibidas]
 promedio_procesamiento = sum(tiempos) / len(instrucciones_recibidas)
-print('SIN CACHE',promedio_procesamiento)
-print([str(j) for j in instrucciones_recibidas])
+print('PRUEBAS:\nSIN CACHE---------------------\nPromedio t ejecucion: ',promedio_procesamiento)
 
 
 
 tiempos = [i.tiempo_ejecucion for i in instrucciones_con_cache]
 promedio_procesamiento = sum(tiempos) / len(instrucciones_con_cache)
-print('CON CACHE',promedio_procesamiento)
-print([str(j) for j in instrucciones_con_cache])
+print('CON CACHE---------------------\nPromedio t ejecucion: ',promedio_procesamiento, '\n\n\n')
 
 #print([(e.tiempo_arribo, e.tiempo_ejecucion) for e in instrucciones_recibidas]) 		chequeo
 #DEBUG: instrucciones_recibidas = [Instruccion(a) for a in range(4000)]
-print("calculo esperas")
+print('---------------------SIN CACHE---------------------')
+print("calculo esperas...")
 
 for index,instruccion in enumerate(instrucciones_recibidas):
 
@@ -106,14 +105,14 @@ for index,instruccion in enumerate(instrucciones_recibidas):
 		espera = instruccion.tiempo_en_el_que_termina_de_ejecutarse() - af.tiempo_arribo
 		af.nuevo_tiempo_de_espera(espera)
 
-print('calculo promedios')
+print('calculo promedios...')
 tiempos = [i.tiempo_procesamiento for i in instrucciones_recibidas]
 promedio_procesamiento = sum(tiempos) / len(instrucciones_recibidas)
-print(promedio_procesamiento)
+print('Promedio procesamiento: ',promedio_procesamiento)
 
 
 
-print('CON CACHE')
+print('\n---------------------CON CACHE---------------------')
 
 print("calculo esperas")
 
@@ -140,7 +139,7 @@ for index,instruccion in enumerate(instrucciones_con_cache):
 print('calculo promedios')
 tiempos = [i.tiempo_procesamiento for i in instrucciones_con_cache]
 promedio_procesamiento = sum(tiempos) / len(instrucciones_con_cache)
-print(promedio_procesamiento)
+print('Promedio procesamiento: ', promedio_procesamiento)
 
 
 
